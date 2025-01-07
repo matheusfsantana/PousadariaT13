@@ -1,0 +1,13 @@
+<h1> Login </h1>
+
+<h2> Dono de pousada </h2>
+
+<%= link_to 'Entrar', new_inn_owner_session_path, class: 'btn btn-primary', id: 'login_owner' %>
+<%= link_to 'Criar nova conta', new_inn_owner_registration_path, class: 'btn btn-success', id: 'register_owner' %>
+
+<hr>
+
+<h2> Usuário comum </h2>
+
+<%= link_to 'Entrar', new_user_session_path, class: 'btn btn-primary', id: 'login_user' %>
+<%= link_to 'Criar nova conta', new_user_registration_path, class: 'btn btn-success', id: 'register_user' %>

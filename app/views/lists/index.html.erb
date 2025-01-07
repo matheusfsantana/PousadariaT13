@@ -1,0 +1,7 @@
+<h1>Minhas Listas</h1>
+
+<%= link_to 'Criar Lista', new_list_path, class: 'navbar-link' %>
+
+<% @lists.each do |list| %>
+  <%= list.name %>
+<% end %>

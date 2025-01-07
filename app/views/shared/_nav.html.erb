@@ -6,8 +6,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item nav-link"><%= link_to 'Gestão de Pousadas', inn_management_path, class: 'navbar-link' %></li>
+        <% unless user_signed_in? || inn_owner_signed_in? %>
+          <li class="nav-item nav-link"><%= link_to 'Entrar', choose_user_path, class: 'navbar-link' %></li>
+        <% end %>
+
         <% if inn_owner_signed_in? %>
+         <li class="nav-item nav-link"><%= link_to 'Gestão de Pousadas', inn_management_path, class: 'navbar-link' %></li>
          <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <%= current_inn_owner.email %>
@@ -18,6 +22,21 @@
             
             <li><%= button_to 'Sair', destroy_inn_owner_session_path, { method: :delete,  class: 'dropdown-item', form: { "data-turbo": false } } %></li>
           </ul>
+        </li>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <li class="nav-item nav-link"><%= link_to 'Minhas Listas', lists_path, class: 'navbar-link' %></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= current_user.email %>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Meu Perfil</a></li>
+              <li><hr class="dropdown-divider"></li>
+              
+              <li><%= button_to 'Sair', destroy_user_session_path, { method: :delete,  class: 'dropdown-item', form: { "data-turbo": false } } %></li>
+            </ul>
         </li>
         <% end %>
       </ul>

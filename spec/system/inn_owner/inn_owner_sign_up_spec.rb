@@ -5,8 +5,8 @@ describe 'Inn owner sign up' do
   context 'authentication' do
     it 'create new account' do
       visit root_path
-      click_on 'Gestão de Pousadas'
-      click_on 'Criar nova conta'
+      click_on 'Entrar'
+      find(:css, '#register_owner').click
       fill_in 'Nome', with: 'João'
       fill_in 'Sobrenome', with: 'Almeida'
       fill_in 'CPF', with: '53783222001'
@@ -27,8 +27,8 @@ describe 'Inn owner sign up' do
       inn_owner.create_inn!(name: 'Pousada da Erika', registration_number: '30638898000199')
 
       visit root_path
-      click_on 'Gestão de Pousadas'
-      click_on 'Criar nova conta'
+      click_on 'Entrar'
+      find(:css, '#register_owner').click
       fill_in 'Nome', with: 'João'
       fill_in 'Sobrenome', with: 'Almeida'
       fill_in 'CPF', with: '53783222001'
@@ -51,11 +51,13 @@ describe 'Inn owner sign up' do
       inn_owner.create_inn!(name: 'Pousada do Almeidinha', registration_number: '30638898000199')
 
       visit root_path
-      click_on 'Gestão de Pousadas'
       click_on 'Entrar'
-      fill_in 'E-mail', with: 'joao@email.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
+      find(:css, '#login_owner').click
+      within('form') do
+        fill_in 'E-mail', with: 'joao@email.com'
+        fill_in 'Senha', with: '123456'
+        click_on 'Entrar'
+      end
 
       fill_in 'Descrição', with: 'Pousada ideal para um fim de semana longe da rotina...'
       fill_in 'CEP', with: '01001-001'
@@ -78,12 +80,14 @@ describe 'Inn owner sign up' do
       inn_owner.create_inn!(name: 'Pousada do Almeidinha', registration_number: '30638898000199')
 
       visit root_path
-      click_on 'Gestão de Pousadas'
       click_on 'Entrar'
-      fill_in 'E-mail', with: 'joao@email.com'
-      fill_in 'Senha', with: '123456'
-      click_on 'Entrar'
-
+      find(:css, '#login_owner').click
+      within('form') do
+        fill_in 'E-mail', with: 'joao@email.com'
+        fill_in 'Senha', with: '123456'
+        click_on 'Entrar'
+      end
+  
       fill_in 'Descrição', with: ''
       fill_in 'CEP', with: ''
       fill_in 'Endereço', with: ''

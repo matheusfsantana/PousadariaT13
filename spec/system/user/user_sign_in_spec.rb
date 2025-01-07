@@ -1,16 +1,15 @@
 require 'rails_helper'
 
-
-describe 'Inn owner sign in' do
+describe 'User sign in' do
 
   it 'successfully' do
-    inn_owner = InnOwner.create!(first_name: 'Erika', last_name: 'Campos', 
-                                document: '69174680889', email: 'erika@email.com', password: '123456')
-    inn_owner.create_inn!(name: 'Pousada da Erika', registration_number: '30638898000199')
+    User.create!(name: 'Erika', email: 'erika@email.com', password: '123456')
 
     visit root_path
     click_on 'Entrar'
-    find(:css, '#login_owner').click
+
+    find(:css, '#login_user').click
+
     within('form') do
       fill_in 'E-mail', with: 'erika@email.com'
       fill_in 'Senha', with: '123456'

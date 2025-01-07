@@ -10,12 +10,23 @@ pt-BR:
       inn_room:
         one: Quarto
         other: Quartos
+      user:
+        one: Usuário
+        other: Usuários
+      list:
+        one: Lista
+        other: Listas
     attributes:
       inn_owner:
         email: 'E-mail'
         first_name: 'Nome'
         last_name: 'Sobrenome'
         document: 'CPF'
+        password: 'Senha'
+        password_confirmation: 'Confirme sua senha'
+      user:
+        email: 'E-mail'
+        name: 'Nome'
         password: 'Senha'
         password_confirmation: 'Confirme sua senha'
       inn:
@@ -35,3 +46,5 @@ pt-BR:
         guest_limit: 'Máximo de Hóspedes'
         photo: 'Foto'
         daily_rate_cents: 'Valor Diária'
+      list:
+        name: 'Nome'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   devise_for :inn_owners
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -8,8 +9,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "home#index"
-  resources :inns, only: [:show]
+  get "/choose_user", to: "login#choose_user"
 
+  resources :lists, only: [:index, :new, :create]
+
+  resources :inns, only: [:show]
   resource :inn_management, only: [:show]
 
   namespace :inn_dashboard do
